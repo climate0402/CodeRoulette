@@ -1,0 +1,368 @@
+.profile {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.profile-loading,
+.profile-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+  gap: 20px;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-top: 4px solid #4ecdc4;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  font-weight: bold;
+  color: white;
+  flex-shrink: 0;
+}
+
+.profile-info {
+  flex: 1;
+}
+
+.profile-name {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+}
+
+.profile-rating {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.rating-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.rating-label {
+  color: #ccc;
+  font-size: 1rem;
+}
+
+.profile-email {
+  color: #ccc;
+  margin: 0;
+  font-size: 1rem;
+}
+
+.profile-stats-summary {
+  display: flex;
+  gap: 30px;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #4ecdc4;
+  margin-bottom: 5px;
+}
+
+.stat-label {
+  color: #ccc;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.profile-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tab-btn {
+  padding: 12px 24px;
+  background: transparent;
+  border: none;
+  color: #ccc;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  color: #ffffff;
+}
+
+.tab-btn.active {
+  color: #4ecdc4;
+  border-bottom-color: #4ecdc4;
+}
+
+.profile-content {
+  min-height: 400px;
+}
+
+.stats-content {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 30px;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  text-align: center;
+}
+
+.stat-card h3 {
+  color: #ccc;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 0 10px 0;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stat-number {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #4ecdc4;
+  margin: 0;
+}
+
+.history-content {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 30px;
+}
+
+.match-history {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.match-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: background 0.3s ease;
+}
+
+.match-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.match-result {
+  flex-shrink: 0;
+}
+
+.result-badge {
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.result-badge.win {
+  background: rgba(78, 205, 196, 0.2);
+  color: #4ecdc4;
+  border: 1px solid #4ecdc4;
+}
+
+.result-badge.loss {
+  background: rgba(255, 107, 107, 0.2);
+  color: #ff6b6b;
+  border: 1px solid #ff6b6b;
+}
+
+.match-details {
+  flex: 1;
+}
+
+.match-opponent {
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 5px;
+}
+
+.match-problem {
+  color: #4ecdc4;
+  margin-bottom: 5px;
+}
+
+.match-meta {
+  color: #ccc;
+  font-size: 14px;
+}
+
+.match-score {
+  flex-shrink: 0;
+  text-align: center;
+}
+
+.score-value {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #4ecdc4;
+}
+
+.achievements-content {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 30px;
+}
+
+.achievements-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.achievement-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.achievement-card.earned {
+  border-color: rgba(78, 205, 196, 0.3);
+  background: rgba(78, 205, 196, 0.05);
+}
+
+.achievement-card:hover {
+  transform: translateY(-2px);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.achievement-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.achievement-card h3 {
+  color: #4ecdc4;
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 0 0 10px 0;
+}
+
+.achievement-card p {
+  color: #ccc;
+  margin: 0 0 15px 0;
+  line-height: 1.5;
+}
+
+.achievement-date {
+  color: #4ecdc4;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.achievement-progress {
+  color: #ff6b6b;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .profile-stats-summary {
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .profile-tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .match-item {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+  
+  .match-details {
+    order: 1;
+  }
+  
+  .match-result {
+    order: 2;
+  }
+  
+  .match-score {
+    order: 3;
+  }
+  
+  .stats-grid,
+  .achievements-grid {
+    grid-template-columns: 1fr;
+  }
+}

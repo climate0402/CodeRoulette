@@ -1,0 +1,191 @@
+[1mdiff --git a/README.md b/README.md[m
+[1mindex 9f56f22..b6e61fb 100644[m
+[1m--- a/README.md[m
+[1m+++ b/README.md[m
+[36m@@ -1,2 +1,221 @@[m
+[31m-# CodeRoulette[m
+[31m-CodeRoulette 是一个实时 编程对战平台，结合教育和娱乐：  用户随机匹配，系统给出小任务（函数、bug修复、重构），双方同时作答。  系统自动评测并生成战报，支持观战和技能卡玩法。[m
+[32m+[m[32m# CodeRoulette 🎯[m
+[32m+[m
+[32m+[m[32mA real-time programming battle platform where developers compete in live coding challenges with skill cards and detailed battle reports.[m
+[32m+[m
+[32m+[m[32m## 🚀 Features[m
+[32m+[m
+[32m+[m[32m- **Real-time Battles**: Compete against other programmers in live coding challenges[m
+[32m+[m[32m- **Skill Cards**: Use special abilities to gain advantages during battles[m
+[32m+[m[32m- **Detailed Reports**: Get comprehensive battle reports and performance analytics[m
+[32m+[m[32m- **Spectator Mode**: Watch other battles and learn from top players[m
+[32m+[m[32m- **Multiple Languages**: Support for Go, Python, and JavaScript[m
+[32m+[m[32m- **Leaderboard**: Track your ranking and compete with the best[m
+[32m+[m
+[32m+[m[32m## 🏗️ Architecture[m
+[32m+[m
+[32m+[m[32m### Backend (Go)[m
+[32m+[m[32m- **Gin Framework**: High-performance HTTP web framework[m
+[32m+[m[32m- **PostgreSQL**: Primary database for user data, problems, and match history[m
+[32m+[m[32m- **Redis**: Caching and real-time matchmaking queue[m
+[32m+[m[32m- **WebSocket**: Real-time communication for battles[m
+[32m+[m[32m- **Docker**: Safe code execution environment[m
+[32m+[m
+[32m+[m[32m### Frontend (React + TypeScript)[m
+[32m+[m[32m- **React 18**: Modern React with hooks and functional components[m
+[32m+[m[32m- **Monaco Editor**: VS Code-like code editor[m
+[32m+[m[32m- **WebSocket Client**: Real-time battle communication[m
+[32m+[m[32m- **Responsive Design**: Works on desktop and mobile[m
+[32m+[m
+[32m+[m[32m## 🛠️ Tech Stack[m
+[32m+[m
+[32m+[m[32m### Backend[m
+[32m+[m[32m- Go 1.21[m
+[32m+[m[32m- Gin Web Framework[m
+[32m+[m[32m- PostgreSQL 15[m
+[32m+[m[32m- Redis 7[m
+[32m+[m[32m- Docker[m
+[32m+[m[32m- WebSocket (Gorilla)[m
+[32m+[m
+[32m+[m[32m### Frontend[m
+[32m+[m[32m- React 18[m
+[32m+[m[32m- TypeScript[m
+[32m+[m[32m- Monaco Editor[m
+[32m+[m[32m- Socket.io Client[m
+[32m+[m[32m- CSS3 with modern features[m
+[32m+[m
+[32m+[m[32m## 🚀 Quick Start[m
+[32m+[m
+[32m+[m[32m### Prerequisites[m
+[32m+[m[32m- Docker and Docker Compose[m
+[32m+[m[32m- Go 1.21+ (for local development)[m
+[32m+[m[32m- Node.js 18+ (for local development)[m
+[32m+[m
+[32m+[m[32m### Using Docker Compose (Recommended)[m
+[32m+[m
+[32m+[m[32m1. **Clone the repository**[m
+[32m+[m[32m   ```bash[m
+[32m+[m[32m   git clone https://github.com/yourusername/coderoulette.git[m
+[32m+[m[32m   cd coderoulette[m
+[32m+[m[32m   ```[m
+[32m+[m
+[32m+[m[32m2. **Start all services**[m
+[32m+[m[32m   ```bash[m
+[32m+[m[32m   docker-compose up -d[m
+[32m+[m[32m   ```[m
+[32m+[m
+[32m+[m[32m3. **Access the application**[m
+[32m+[m[32m   - Frontend: http://localhost:3000[m
+[32m+[m[32m   - Backend API: http://localhost:8080[m
+[32m+[m[32m   - PostgreSQL: localhost:5432[m
+[32m+[m[32m   - Redis: localhost:6379[m
+[32m+[m
+[32m+[m[32m### Local Development[m
+[32m+[m
+[32m+[m[32m1. **Start databases**[m
+[32m+[m[32m   ```bash[m
+[32m+[m[32m   docker-compose up -d postgres redis[m
+[32m+[m[32m   ```[m
+[32m+[m
+[32m+[m[32m2. **Backend setup**[m
+[32m+[m[32m   ```bash[m
+[32m+[m[32m   cd backend[m
+[32m+[m[32m   cp env.example .env[m
+[32m+[m[32m   # Edit .env with your database credentials[m
+[32m+[m[32m   go mod download[m
+[32m+[m[32m   go run main.go[m
+[32m+[m[32m   ```[m
+[32m+[m
+[32m+[m[32m3. **Frontend setup**[m
+[32m+[m[32m   ```bash[m
+[32m+[m[32m   cd frontend[m
+[32m+[m[32m   npm install[m
+[32m+[m[32m   npm start[m
+[32m+[m[32m   ```[m
+[32m+[m
+[32m+[m[32m## 📁 Project Structure[m
+[32m+[m
+[32m+[m[32m```[m
+[32m+[m[32mcoderoulette/[m
+[32m+[m[32m├── backend/                 # Go backend[m
+[32m+[m[32m│   ├── internal/[m
+[32m+[m[32m│   │   ├── config/         # Configuration[m
+[32m+[m[32m│   │   ├── database/       # Database models and connection[m
+[32m+[m[32m│   │   ├── handlers/       # HTTP handlers[m
+[32m+[m[32m│   │   └── services/       # Business logic[m
+[32m+[m[32m│   ├── main.go[m
+[32m+[m[32m│   └── Dockerfile[m
+[32m+[m[32m├── frontend/               # React frontend[m
+[32m+[m[32m│   ├── src/[m
+[32m+[m[32m│   │   ├── components/     # React components[m
+[32m+[m[32m│   │   ├── App.tsx[m
+[32m+[m[32m│   │   └── index.tsx[m
+[32m+[m[32m│   ├── public/[m
+[32m+[m[32m│   └── Dockerfile[m
+[32m+[m[32m├── docker-compose.yml      # Development environment[m
+[32m+[m[32m└── README.md[m
+[32m+[m[32m```[m
+[32m+[m
+[32m+[m[32m## 🎮 How to Play[m
+[32m+[m
+[32m+[m[32m1. **Start a Battle**: Choose difficulty and programming language[m
+[32m+[m[32m2. **Get Matched**: System finds an opponent with similar skill level[m
+[32m+[m[32m3. **Code**: Solve the given problem in the time limit[m
+[32m+[m[32m4. **Use Skill Cards**: Deploy special abilities to gain advantages[m
+[32m+[m[32m5. **Submit**: Submit your solution and see results[m
+[32m+[m[32m6. **View Report**: Get detailed battle analysis and performance metrics[m
+[32m+[m
+[32m+[m[32m## 🃏 Skill Cards[m
+[32m+[m
+[32m+[m[32m- **Code Peek**: View one line of opponent's code[m
+[32m+[m[32m- **Hint**: Get a hint for the current problem[m
+[32m+[m[32m- **Time Boost**: Get 30 seconds extra time[m
+[32m+[m[32m- **Test Swap**: Swap one test case with opponent[m
+[32m+[m[32m- **Code Lock**: Lock opponent's code for 10 seconds[m
+[32m+[m[32m- **Perfect Score**: Guarantee 100% score on next submission[m
+[32m+[m
+[32m+[m[32m## 🔧 API Endpoints[m
+[32m+[m
+[32m+[m[32m### Matches[m
+[32m+[m[32m- `POST /api/v1/matches/queue` - Queue for matchmaking[m
+[32m+[m[32m- `GET /api/v1/matches/status/:id` - Get match status[m
+[32m+[m[32m- `GET /api/v1/matches/queue-status` - Get queue status[m
+[32m+[m
+[32m+[m[32m### Problems[m
+[32m+[m[32m- `GET /api/v1/problems/random` - Get random problem[m
+[32m+[m[32m- `GET /api/v1/problems/:id` - Get specific problem[m
+[32m+[m[32m- `POST /api/v1/problems` - Create new problem[m
+[32m+[m
+[32m+[m[32m### Submissions[m
+[32m+[m[32m- `POST /api/v1/submissions` - Submit code[m
+[32m+[m[32m- `GET /api/v1/submissions/:id` - Get submission details[m
+[32m+[m[32m- `GET /api/v1/submissions/match/:matchId` - Get match submissions[m
+[32m+[m
+[32m+[m[32m### Reports[m
+[32m+[m[32m- `GET /api/v1/reports/:matchId` - Get match report[m
+[32m+[m[32m- `GET /api/v1/reports/user/:userId` - Get user reports[m
+[32m+[m[32m- `GET /api/v1/reports/leaderboard` - Get leaderboard[m
+[32m+[m
+[32m+[m[32m### Skill Cards[m
+[32m+[m[32m- `GET /api/v1/skill-cards` - Get available cards[m
+[32m+[m[32m- `GET /api/v1/skill-cards/player/:playerId` - Get player cards[m
+[32m+[m[32m- `POST /api/v1/skill-cards/use` - Use skill card[m
+[32m+[m
+[32m+[m[32m### WebSocket[m
+[32m+[m[32m- `GET /ws/match/:roomId` - Join match room[m
+[32m+[m
+[32m+[m[32m## 🧪 Testing[m
+[32m+[m
+[32m+[m[32m### Backend Tests[m
+[32m+[m[32m```bash[m
+[32m+[m[32mcd backend[m
+[32m+[m[32mgo test ./...[m
+[32m+[m[32m```[m
+[32m+[m
+[32m+[m[32m### Frontend Tests[m
+[32m+[m[32m```bash[m
+[32m+[m[32mcd frontend[m
+[32m+[m[32mnpm test[m
+[32m+[m[32m```[m
+[32m+[m
+[32m+[m[32m## 🚀 Deployment[m
+[32m+[m
+[32m+[m[32m### Production Build[m
+[32m+[m[32m```bash[m
+[32m+[m[32m# Buil
