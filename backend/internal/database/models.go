@@ -9,7 +9,7 @@ import (
 
 // User represents a user in the system
 type User struct {
-	ID        uuid.UUID `gorm:"type:uuid;primary_key;default:gen_random_uuid()" json:"id"`
+	BaseIDModel
 	Username  string    `gorm:"uniqueIndex;not null" json:"username"`
 	Email     string    `gorm:"uniqueIndex;not null" json:"email"`
 	Password  string    `gorm:"not null" json:"-"`
@@ -22,7 +22,7 @@ type User struct {
 
 // Problem represents a coding problem
 type Problem struct {
-	ID          uuid.UUID `gorm:"type:uuid;primary_key;default:gen_random_uuid()" json:"id"`
+	BaseIDModel
 	Title       string    `gorm:"not null" json:"title"`
 	Description string    `gorm:"type:text;not null" json:"description"`
 	Difficulty  string    `gorm:"not null" json:"difficulty"`   // easy, medium, hard
@@ -35,7 +35,7 @@ type Problem struct {
 
 // Match represents a match between two players
 type Match struct {
-	ID        uuid.UUID  `gorm:"type:uuid;primary_key;default:gen_random_uuid()" json:"id"`
+	BaseIDModel
 	Player1ID uuid.UUID  `gorm:"not null" json:"player1_id"`
 	Player2ID uuid.UUID  `gorm:"not null" json:"player2_id"`
 	ProblemID uuid.UUID  `gorm:"not null" json:"problem_id"`
@@ -52,9 +52,9 @@ type Match struct {
 	Winner  *User   `gorm:"foreignKey:WinnerID" json:"winner"`
 }
 
-// Submission represents a code submission by a player
+// Submission represents a code submission by a player 记录对战过程，提供“回放”给观众，同时report总结时可以查看提交的所有信息
 type Submission struct {
-	ID        uuid.UUID `gorm:"type:uuid;primary_key;default:gen_random_uuid()" json:"id"`
+	BaseIDModel
 	MatchID   uuid.UUID `gorm:"not null" json:"match_id"`
 	PlayerID  uuid.UUID `gorm:"not null" json:"player_id"`
 	Code      string    `gorm:"type:text;not null" json:"code"`
@@ -72,7 +72,7 @@ type Submission struct {
 
 // Report represents a match report
 type Report struct {
-	ID        uuid.UUID `gorm:"type:uuid;primary_key;default:gen_random_uuid()" json:"id"`
+	BaseIDModel
 	MatchID   uuid.UUID `gorm:"not null" json:"match_id"`
 	Data      string    `gorm:"type:jsonb;not null" json:"data"` // JSON report data
 	CreatedAt time.Time `json:"created_at"`
@@ -83,7 +83,7 @@ type Report struct {
 
 // SkillCard represents a skill card that can be used in matches
 type SkillCard struct {
-	ID          uuid.UUID `gorm:"type:uuid;primary_key;default:gen_random_uuid()" json:"id"`
+	BaseIDModel
 	Name        string    `gorm:"not null" json:"name"`
 	Description string    `gorm:"type:text;not null" json:"description"`
 	Type        string    `gorm:"not null" json:"type"` // peek, swap, hint, etc.
@@ -94,44 +94,14 @@ type SkillCard struct {
 }
 
 // BeforeCreate hook for UUID generation
-func (u *User) BeforeCreate(tx *gorm.DB) error {
-	if u.ID == uuid.Nil {
-		u.ID = uuid.New()
-	}
-	return nil
+//统一写法
+type BaseIDModel struct {
+	ID uuid.UUID `gorm:"type:uuid;primaryKey" json:"id"`
 }
 
-func (p *Problem) BeforeCreate(tx *gorm.DB) error {
-	if p.ID == uuid.Nil {
-		p.ID = uuid.New()
-	}
-	return nil
-}
-
-func (m *Match) BeforeCreate(tx *gorm.DB) error {
-	if m.ID == uuid.Nil {
-		m.ID = uuid.New()
-	}
-	return nil
-}
-
-func (s *Submission) BeforeCreate(tx *gorm.DB) error {
-	if s.ID == uuid.Nil {
-		s.ID = uuid.New()
-	}
-	return nil
-}
-
-func (r *Report) BeforeCreate(tx *gorm.DB) error {
-	if r.ID == uuid.Nil {
-		r.ID = uuid.New()
-	}
-	return nil
-}
-
-func (sc *SkillCard) BeforeCreate(tx *gorm.DB) error {
-	if sc.ID == uuid.Nil {
-		sc.ID = uuid.New()
+func (bm *BaseIDModel) BeforeCreate(tx *gorm.DB) error {
+	if bm.ID == uuid.Nil {
+		bm.ID = uuid.New()
 	}
 	return nil
 }
